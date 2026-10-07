@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김지희 | 로봇 시뮬레이션 엔지니어</title>
+<meta name="description" content="Isaac Sim 디지털 트윈 · 협동로봇 OLP 시뮬레이션 엔지니어 김지희의 포트폴리오">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#ffffff; --fg:#111111; --sub:#555555; --mute:#888888; --line:#e5e5e5;
+  --card:#fafafa; --tag:#f0f0f0; --hi:#0b57d0;
+  --max:960px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:72px}
+body{margin:0; background:var(--bg); color:var(--fg);
+  font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px; line-height:1.75; word-break:keep-all; -webkit-font-smoothing:antialiased}
+a{color:inherit}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:.88em; background:var(--tag); padding:1px 5px; border-radius:4px}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+header.nav{position:sticky; top:0; z-index:10; background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(1.4) blur(8px); border-bottom:1px solid var(--line)}
+header.nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px}
+header.nav .brand{font-weight:700; text-decoration:none; white-space:nowrap}
+header.nav nav{display:flex; gap:20px; overflow-x:auto; scrollbar-width:none}
+header.nav nav::-webkit-scrollbar{display:none}
+header.nav nav a{text-decoration:none; color:var(--sub); font-size:14px; white-space:nowrap}
+header.nav nav a:hover{color:var(--fg)}
+
+.hero{padding:88px 0 56px; border-bottom:1px solid var(--line)}
+.hero .eyebrow{font-size:14px; color:var(--mute); letter-spacing:.06em; margin:0 0 12px}
+.hero h1{font-size:clamp(30px,4.6vw,44px); line-height:1.25; letter-spacing:-.02em; margin:0 0 18px}
+.hero .lead{font-size:clamp(16px,2vw,19px); color:var(--sub); max-width:760px; margin:0 0 28px}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none}
+.chips li{border:1px solid var(--line); border-radius:999px; padding:4px 12px; font-size:14px; color:var(--sub)}
+
+section{padding:64px 0; border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute); margin:0 0 28px; font-weight:600}
+h3{font-size:22px; letter-spacing:-.01em; line-height:1.4; margin:0}
+h4{font-size:16px; margin:22px 0 8px}
+p{margin:0 0 12px}
+ul.dots{margin:0; padding-left:1.1em}
+ul.dots li{margin:6px 0}
+ul.dots li::marker{color:var(--mute)}
+
+.about-lead{font-size:18px; margin-bottom:18px}
+
+.skills{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:16px}
+.skill-group{border:1px solid var(--line); border-radius:12px; padding:18px 20px}
+.skill-group h4{margin:0 0 10px; font-size:15px}
+.skill-group ul{list-style:none; margin:0; padding:0}
+.skill-group li{display:flex; gap:10px; padding:4px 0; font-size:15px; line-height:1.55}
+.skill-group li i{font-style:normal; width:1.2em; flex:none}
+.legend{font-size:13px; color:var(--mute); margin-top:12px}
+
+.exp{display:grid; grid-template-columns:180px 1fr; gap:8px 32px}
+.exp .when{color:var(--mute); font-size:15px}
+.exp .role{color:var(--sub); margin:2px 0 12px}
+
+.project{padding:44px 0; border-top:1px solid var(--line)}
+.project:first-of-type{border-top:0; padding-top:0}
+.p-head{display:grid; grid-template-columns:56px 1fr; gap:0 16px; align-items:start}
+.p-num{font-size:28px; font-weight:700; color:var(--mute); line-height:1.25; font-variant-numeric:tabular-nums}
+.p-meta{color:var(--mute); font-size:14px; margin:6px 0 10px}
+.tags{display:flex; flex-wrap:wrap; gap:6px; margin:0; padding:0; list-style:none}
+.tags li{background:var(--tag); border-radius:6px; padding:2px 8px; font-size:13px; color:var(--sub)}
+.p-body{margin-left:72px}
+.p-summary{font-size:17px; margin:18px 0 18px}
+.metrics{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin:0 0 20px}
+.metric{border:1px solid var(--line); border-radius:12px; padding:14px 16px; background:var(--card)}
+.metric .v{font-size:24px; font-weight:700; letter-spacing:-.02em; line-height:1.25; font-variant-numeric:tabular-nums}
+.metric .k{font-size:13px; color:var(--sub); margin-top:4px; line-height:1.45}
+.p-body > ul.dots{margin:0 0 20px}
+.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:10px; margin:0 0 8px}
+.gallery figure{margin:0}
+.gallery:has(> figure:only-child){max-width:560px}
+.gallery button{display:block; width:100%; padding:0; border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  background:var(--card); cursor:zoom-in; aspect-ratio:16/10}
+.gallery img{width:100%; height:100%; object-fit:cover; object-position:top; display:block}
+.gallery figcaption{font-size:13px; color:var(--mute); margin-top:6px; line-height:1.45}
+.diagram{border:1px solid var(--line); border-radius:12px; padding:12px; margin:0 0 20px; background:var(--card)}
+.diagram svg{width:100%; height:auto; display:block}
+.diagram p{font-size:13px; color:var(--mute); margin:8px 4px 0}
+
+.others{width:100%; border-collapse:collapse; font-size:15px}
+.others th,.others td{text-align:left; padding:12px 10px; border-bottom:1px solid var(--line); vertical-align:top}
+.others th{font-size:13px; color:var(--mute); font-weight:600}
+.others td:first-child{white-space:nowrap; color:var(--mute)}
+
+.edu-item{margin:0 0 22px}
+.edu-item h4{margin:0 0 2px}
+.edu-item .when{color:var(--mute); font-size:14px; margin-bottom:6px}
+.todo{color:#9a6700; background:#fff8e1; border:1px dashed #e0c36a; border-radius:8px; padding:10px 14px; font-size:14px}
+
+footer{padding:40px 0 64px; color:var(--mute); font-size:13px}
+
+dialog.lb{border:0; padding:0; background:transparent; max-width:96vw; max-height:94vh}
+dialog.lb::backdrop{background:rgba(0,0,0,.82)}
+dialog.lb img{max-width:96vw; max-height:86vh; display:block; border-radius:8px}
+dialog.lb p{color:#ddd; text-align:center; font-size:14px; margin:10px 0 0}
+dialog.lb form{position:fixed; top:12px; right:16px}
+dialog.lb button{background:none; border:0; color:#fff; font-size:32px; cursor:pointer; line-height:1}
+
+@media (max-width:720px){
+  .hero{padding:56px 0 40px}
+  section{padding:48px 0}
+  .exp{grid-template-columns:1fr}
+  .p-head{grid-template-columns:1fr}
+  .p-num{font-size:20px; margin-bottom:4px}
+  .p-body{margin-left:0}
+  .others td:first-child{white-space:normal}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">김지희</a>
+    <nav aria-label="섹션 이동">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">로봇 시뮬레이션 엔지니어 · Robotics Simulation Engineer</p>
+    <h1>Isaac Sim 디지털 트윈 · 협동로봇 OLP<br>시뮬레이션 엔지니어</h1>
+    <p class="lead">실제 로봇에 프로그램을 올리기 전, RoboDK와 NVIDIA Isaac Sim으로 작업 경로와 공정을 가상 검증하고, 검증된 경로를 협동로봇(Rainbow RB16-900, UFactory Lite6)의 실행 코드로 자동 변환·주입하는 OLP 파이프라인과 Sim-to-Real 검증까지 연결해 온 엔지니어입니다.</p>
+    <ul class="chips">
+      <li>NVIDIA Isaac Sim · Omniverse Kit</li>
+      <li>Sim-to-Real</li>
+      <li>OLP (Offline Programming)</li>
+      <li>RoboDK</li>
+      <li>ROS2</li>
+      <li>PhysX</li>
+      <li>Python</li>
+    </ul>
+  </div>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p class="about-lead"><b>NVIDIA Isaac Sim과 RoboDK를 기반으로 협동로봇의 디지털 트윈·오프라인 프로그래밍(OLP)과 Sim-to-Real 검증을 다뤄 온</b> 로봇 시뮬레이션 엔지니어입니다.</p>
+    <ul class="dots">
+      <li><b>Isaac Sim 디지털 트윈 구축</b>에 강점 — URDF → USD 변환, Articulation·Joint Drive 제어, PhysX 충돌·입자 물리, Omniverse Kit Extension UI까지 직접 구현</li>
+      <li><b>시뮬레이션 결과를 실제 로봇에서 수치로 증명</b> — RoboDK → Rainbow RB16 무수정 실행 10/10(100%), 시뮬레이터 사이클 타임 오차 평균 0.0135%로 정부 R&amp;D 정량목표 통과</li>
+      <li><b>End-to-End 자동화 파이프라인 설계</b> — 작업 입력 → 가상 검증 → OLP 코드 생성 → MinIO·Redis → ROS2 Bridge → 실로봇 실행까지 서비스 형태로 연결</li>
+      <li><b>원인을 끝까지 추적하는 문제 해결</b> — OS 비실시간성으로 인한 누적 지연, PhysX 입자 좌표 발산 등을 구조적으로 해결</li>
+      <li><b>정부 R&amp;D 과제 수행 경험</b> — 시험절차서·단계보고서·연구노트(5개 과제) 작성, 로봇 제조사·수요기업 현장 대응, CES 2026 참가</li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill-group">
+        <h4>Robotics Simulation</h4>
+        <ul>
+          <li><i>◎</i>NVIDIA Isaac Sim (USD, Articulation, Joint Drive, PhysX)</li>
+          <li><i>◎</i>RoboDK (Python API, Post Processor, OLP Export)</li>
+          <li><i>○</i>Omniverse Kit Extension (UI, Script Editor)</li>
+          <li><i>○</i>PhysX PBD Particle (유체·실런트 토출 근사)</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Robot Software</h4>
+        <ul>
+          <li><i>◎</i>OLP 생성 (Rainbow .wsl / RB-Script, MoveJ·MoveL)</li>
+          <li><i>○</i>ROS2 Humble (노드, Bridge, Queue 연동)</li>
+          <li><i>○</i>로봇 SDK 제어 (UFactory Lite6, Rainbow RB 시리즈)</li>
+          <li><i>○</i>URDF → USD 변환, DH 파라미터·좌표계 정합</li>
+          <li><i>○</i>3D LiDAR 인식 (OpenPCDet, Jetson Orin)</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h4>Languages / Tools</h4>
+        <ul>
+          <li><i>◎</i>Python (numpy, scipy, FastAPI)</li>
+          <li><i>○</i>C++</li>
+          <li><i>○</i>Docker, Linux, SSH, WSL, NVIDIA DGX</li>
+          <li><i>○</i>Redis, MinIO, Git / GitHub</li>
+        </ul>
+      </div>
+    </div>
+    <p class="legend">◎ 실무 프로젝트에서 주도적으로 사용 · ○ 프로젝트에 적용해 본 경험</p>
+  </section>
+
+  <section id="experience">
+    <h2>Work Experience</h2>
+    <div class="exp">
+      <div class="when">2025.07 ~ 2026.10</div>
+      <div>
+        <h3>제이엔이웍스 · 개발부</h3>
+        <p class="role">로봇 시뮬레이션 엔지니어</p>
+        <p>협동로봇 대상 <b>RoboDK·Isaac Sim 시뮬레이션과 OLP(오프라인 프로그래밍) 개발</b>, 실로봇 Sim-to-Real 검증 담당. 정부 R&amp;D 과제의 정량목표 시험 설계·수행과 보고서 작성까지 맡음.</p>
+        <ul class="dots">
+          <li><b>AI 글로벌 빅테크 육성사업</b>: RoboDK → Rainbow RB16 OLP 정합성·무수정 실행 검증, Isaac Sim 디지털 트윈 OLP 시스템 개발</li>
+          <li><b>디지털기업in경남</b>: RoboDK 시뮬레이터 사이클 타임 검증, 작업자 대비 로봇 생산성 자동 분석</li>
+          <li><b>항공 패널 실런트 자동화</b>: Isaac Sim PhysX 토출 시뮬레이션, RB16 실로봇 도포 PoC</li>
+          <li><b>시장대응형 과제</b>: 무인지게차 3D LiDAR Pallet 인식 정량목표 수행</li>
+          <li>연구노트 작성(강소특구·해양무인·국방벤처·한중국제공동연구·글로벌빅테크), CES 2026 참가</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <!-- 01 -->
+    <article class="project">
+      <div class="p-head">
+        <div class="p-num">01</div>
+        <div>
+          <h3>항공 패널 실런트 도포 로봇 시뮬레이션 &amp; 실로봇 PoC</h3>
+          <p class="p-meta">📅 2026.06 ~ 2026.09 · 항공 패널 실런트 자동화 · 단독 수행</p>
+          <ul class="tags"><li>Isaac Sim 6.0.1</li><li>PhysX PBD Particle</li><li>USD</li><li>URDF</li><li>RB16-900</li><li>Laser Profile Sensor</li></ul>
+        </div>
+      </div>
+      <div class="p-body">
+        <p class="p-summary">실물 패널 CAD가 없는 단계에서 Mock-up 패널로 실런트 도포 공정 전체를 Isaac Sim에 재현하고, 압력·속도·점도에 따른 토출량 변화를 내부 물리엔진으로 검증한 뒤 RB16-900 실로봇 도포 실험으로 연결한 프로젝트.</p>
+        <div class="metrics">
+          <div class="metric"><div class="v">× 2.41</div><div class="k">압력 5 → 12 bar<br>토출량 증가</div></div>
+          <div class="metric"><div class="v">40.1%</div><div class="k">속도 20 → 50 mm/s<br>이론값 40.0%와 일치</div></div>
+          <div class="metric"><div class="v">41.8%</div><div class="k">고점도 / 저점도<br>토출량 비율</div></div>
+          <div class="metric"><div class="v">PASS</div><div class="k">23.15초 시나리오<br>전 구간 좌표 발산 없음</div></div>
+        </div>
+        <ul class="dots">
+          <li><b>시뮬 환경 구축 (단독)</b>: 작업장·시편 CAD 장면을 기준으로 CAD 로봇을 URDF 기반 가동 로봇으로 교체, 실런트 건 장착·노즐 TCP 등록, 접근·도포 시작·종료·후퇴 자세 구성 → 팀 공용 USD 환경으로 배포</li>
+          <li><b>토출 물리 모델</b>: PhysX PBD 입자로 노즐 Emitter 구현, 압력–유량 근사식·점도 보정·TCP 속도 연동 단위 길이당 토출량 적용, 시험 결과 CSV·JSON 자동 저장 및 입자 발산 검사</li>
+          <li><b>트러블슈팅</b>: 입자 좌표 발산(PointInstancer 배열과 부모 좌표계 처리 문제)을 월드·로컬 좌표 구조 수정으로 해결, USD Prim 명명 규칙·Script Editor 모듈 경로 문제 정리 → v1.3.1에서 전 Lane <code>finite = True</code></li>
+          <li><b>실로봇 PoC</b>: RB16-900 + 실런트건 + 공압 시스템으로 직선 반복성 → 속도·압력 단일 변수 비교 → 90° 코너 적용 순서의 실험 설계, 레이저 프로파일 센서 Edge 검출 → 로봇 좌표 변환 → 경로 보정 흐름 구성</li>
+          <li><b>의의</b>: 실물 데이터가 들어오면 USD 자산 교체만으로 2027년 Sim-to-Real 실증 단계로 넘어갈 수 있는 구조를 선제 확보</li>
+        </ul>
+        <div class="gallery">
+          <figure><button type="button" data-full="assets/p4-bead-lanes.png"><img src="assets/p4-bead-lanes.png" alt="조건별 실런트 비드 비교" width="1600" height="951" loading="lazy"></button><figcaption>압력·속도·점도 조건별 Lane에 적층된 PhysX 입자 비드</figcaption></figure>
+          <figure><button type="button" data-full="assets/p4-sealant-cell.png"><img src="assets/p4-sealant-cell.png" alt="실런트 로봇 시뮬레이션 셀" width="1600" height="888" loading="lazy"></button><figcaption>Isaac Sim 실런트 도포 로봇 작업셀</figcaption></figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="project">
+      <div class="p-head">
+        <div class="p-num">02</div>
+        <div>
+          <h3>Isaac Sim 기반 협동로봇 디지털 트윈 OLP 시스템</h3>
+          <p class="p-meta">📅 2025.11 ~ 2026.06 · AI 글로벌 빅테크 육성사업 2차년도 · 단독 수행</p>
+          <ul class="tags"><li>Isaac Sim 5.0</li><li>Omniverse Kit</li><li>ROS2</li><li>FastAPI</li><li>Redis</li><li>MinIO</li><li>Docker</li><li>DGX</li></ul>
+        </div>
+      </div>
+      <div class="p-body">
+        <p class="p-summary">상용 OLP(DELMIA·RoboDK)에 의존하지 않고, Isaac Sim에서 가상 검증을 통과한 경로만 로봇 코드로 생성해 실제 협동로봇에 주입하고 실로봇 상태를 다시 디지털 트윈에 반영하는 자체 OLP 파이프라인 구축을 목표로 한 프로젝트.</p>
+        <div class="diagram">
+          <svg viewBox="0 0 760 350" role="img" aria-label="검증을 통과한 경로만 실제 로봇에 주입된다">
+            <defs>
+              <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#888"/></marker>
+              <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0b57d0"/></marker>
+            </defs>
+            <text x="24" y="32" font-size="15" font-weight="700" fill="#111">검증을 통과한 경로만 실제 로봇에 주입된다</text>
+            <g fill="none" stroke="#888" stroke-width="1.25">
+              <path d="M230 130H280" marker-end="url(#ar)"/>
+              <path d="M480 130H530" marker-end="url(#ar)"/>
+              <path d="M630 162V258" marker-end="url(#ar)"/>
+              <path d="M530 290H480" marker-end="url(#ar)"/>
+              <path d="M280 290H230" marker-end="url(#ar)"/>
+              <path d="M340 98V76H170V98" marker-end="url(#ar)"/>
+            </g>
+            <path d="M170 258V210H340V162" fill="none" stroke="#0b57d0" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar2)"/>
+            <g font-size="13" text-anchor="middle">
+              <rect x="30" y="98" width="200" height="64" rx="8" fill="#fff" stroke="#888"/>
+              <text x="130" y="124" font-weight="700" fill="#111">작업 입력</text>
+              <text x="130" y="144" font-size="11.5" fill="#555">CAD 분석 · 펜던트 티칭</text>
+              <rect x="280" y="98" width="200" height="64" rx="8" fill="#e8f0fe" stroke="#0b57d0" stroke-width="2"/>
+              <text x="380" y="124" font-weight="700" fill="#111">Isaac Sim 디지털 트윈</text>
+              <text x="380" y="144" font-size="11.5" fill="#555">PhysX 충돌·간섭 검증</text>
+              <rect x="530" y="98" width="200" height="64" rx="8" fill="#fff" stroke="#888"/>
+              <text x="630" y="124" font-weight="700" fill="#111">OLP 생성기</text>
+              <text x="630" y="144" font-size="11.5" fill="#555">경로 → 로봇 스크립트</text>
+              <rect x="530" y="258" width="200" height="64" rx="8" fill="#fff" stroke="#888"/>
+              <text x="630" y="284" font-weight="700" fill="#111">MinIO + Redis</text>
+              <text x="630" y="304" font-size="11.5" fill="#555">스크립트 저장 · Job 큐</text>
+              <rect x="280" y="258" width="200" height="64" rx="8" fill="#fff" stroke="#888"/>
+              <text x="380" y="284" font-weight="700" fill="#111">ROS2 Bridge</text>
+              <text x="380" y="304" font-size="11.5" fill="#555">웹 ‘로봇 주입’ → 큐 소비·실행</text>
+              <rect x="30" y="258" width="200" height="64" rx="8" fill="#fff" stroke="#888"/>
+              <text x="130" y="284" font-weight="700" fill="#111">실제 로봇</text>
+              <text x="130" y="304" font-size="11.5" fill="#555">RB16-900 · UFactory Lite6</text>
+            </g>
+            <g font-size="11.5" fill="#555">
+              <text x="505" y="122" text-anchor="middle">PASS</text>
+              <text x="255" y="68" text-anchor="middle">FAIL → 경로 수정</text>
+              <text x="640" y="214">업로드 · 큐 발행</text>
+              <text x="180" y="230" fill="#0b57d0">실시간 관절 상태 미러링</text>
+            </g>
+          </svg>
+          <p>시뮬레이션에서 FAIL이 나면 경로를 수정하고, 실제 로봇의 관절 상태는 점선처럼 Isaac Sim으로 돌아가 가상 모델을 맞춥니다.</p>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="v">10 / 10</div><div class="k">실로봇 펜던트 OLP<br>1차 검증 항목 성공</div></div>
+          <div class="metric"><div class="v">약 1,500줄</div><div class="k">Omniverse Kit<br>Extension 코드</div></div>
+          <div class="metric"><div class="v">6단계</div><div class="k">입력 → 검증 → 생성 →<br>저장 → 주입 → 실행</div></div>
+        </div>
+        <ul class="dots">
+          <li><b>디지털 트윈 환경 (단독)</b>: GPU 서버에 Isaac Sim 도커 환경 구축, RB16-900 URDF → USD 변환, WebRTC 원격 GUI 접속, 물리 엔진 기반 관절 제어 확인</li>
+          <li><b>OLP 생성기 + 로봇 주입기 (Sprint 4)</b>: CAD 분석 API가 Job ID 발급 → ROS2 노드가 제어 코드 생성 → MinIO 저장·Redis 큐 전달 → 주입기가 로봇에 실행. 하드웨어 미연결 시에도 동작하도록 연결부 Mocking, 공용 서버 도커 배포</li>
+          <li><b>ROS2 Bridge 실행기 (Sprint 5)</b>: 시뮬레이션 PASS → OLP 생성 → 웹에서 코드 확인 → “로봇 주입” → Bridge가 큐 소비·스크립트 실행·결과 기록. Queue 이름·payload 규격 확정, 실로봇 네트워크 연결</li>
+          <li><b>RB App ↔ Isaac Sim 미러링</b>: 외부망(Windows) → 내부망(Linux) 통신, degree → radian 실시간 변환, RB16 6축 articulation 인식 및 상태 동기화</li>
+          <li><b>Omniverse Kit Extension</b>: Script Editor 테스트 코드를 버튼형 확장 UI로 전환, RB16-900 확장, Simvis 스타일 UI 재구성, 티칭 포인트 JSON 저장</li>
+          <li><b>Sim-to-Real 1차 검증</b>: 실제 UFactory Lite6로 SDK 연결, J1~J6 읽기·방향 검증, Isaac Sim 자세 반영, 펜던트 티칭 포인트 생성, MoveJ 실행, DRY_RUN, 이동 중 STOP 10개 항목 모두 성공</li>
+          <li><b>의의</b>: 제조사 기본 조작 프로그램 없이 Isaac Sim 펜던트만으로 실로봇을 읽고·티칭하고·실행할 수 있음을 확인, RoboDK ↔ Isaac Sim Bridge와 RB16 포스트프로세서·TCP/IP·rbpodo 제어 방식 비교 구조로 확장</li>
+        </ul>
+        <div class="gallery">
+          <figure><button type="button" data-full="assets/p3-isaac-pendant.png"><img src="assets/p3-isaac-pendant.png" alt="Isaac Sim과 OLP 펜던트 UI" width="1600" height="879" loading="lazy"></button><figcaption>Isaac Sim 화면과 직접 구현한 OLP 펜던트 UI</figcaption></figure>
+          <figure><button type="button" data-full="assets/p3-pendant-ui.png"><img src="assets/p3-pendant-ui.png" alt="펜던트형 OLP UI" width="1600" height="853" loading="lazy"></button><figcaption>관절 제어·티칭 포인트 관리 펜던트 UI</figcaption></figure>
+          <figure><button type="button" data-full="assets/p3-isaac-rb16.png"><img src="assets/p3-isaac-rb16.png" alt="Isaac Sim RB16-900" width="1600" height="898" loading="lazy"></button><figcaption>Isaac Sim에 구성한 RB16-900 미러링 환경</figcaption></figure>
+          <figure><button type="button" data-full="assets/p3-robodk-bridge.png"><img src="assets/p3-robodk-bridge.png" alt="RoboDK와 Isaac Sim 브리지" width="1600" height="830" loading="lazy"></button><figcaption>RoboDK ↔ Isaac Sim Bridge</figcaption></figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="project">
+      <div class="p-head">
+        <div class="p-num">03</div>
+        <div>
+          <h3>RoboDK → Rainbow RB16 OLP 정합성 및 무수정 실행(Zero Touch-up) 검증</h3>
+          <p class="p-meta">📅 2025.09 ~ 2025.12 · AI 글로벌 빅테크 육성사업 1차년도 · 단독 수행</p>
+          <ul class="tags"><li>RoboDK</li><li>Post Processor</li><li>Rainbow .wsl</li><li>RB16-900</li><li>시험절차서</li></ul>
+        </div>
+      </div>
+      <div class="p-body">
+        <p class="p-summary">시뮬레이션에서 생성한 로봇 프로그램이 실제 협동로봇에서 현장 재티칭(Touch-up) 없이 그대로 동작함을 객관적 데이터로 입증하는 것을 목표로 한 프로젝트.</p>
+        <div class="metrics">
+          <div class="metric"><div class="v">10 / 10</div><div class="k">무수정 실행 성공 (100%)<br>목표 90% 이상</div></div>
+          <div class="metric"><div class="v">±1 이내</div><div class="k">RoboDK ↔ 실로봇<br>관절값 평균 오차, Pass</div></div>
+        </div>
+        <ul class="dots">
+          <li><b>OLP Export 절차 구성 (단독)</b>: RB16-900 모델 조사, RoboDK에서 Rainbow 포스트프로세서로 <code>.wsl</code> 프로그램 Export → 태블릿 앱 로딩·실행 절차 수립</li>
+          <li><b>기본 동작 검증</b>: 컨트롤박스 연결, MoveJ·MoveL·대기 포함 좌표 이동 테스트 코드 작성</li>
+          <li><b>관절값 정합성 시험</b>: Target 1~10 이동 시 Joint 1~6 값을 RoboDK와 로봇 앱에서 기록·비교, 평균 오차 ±1 이내로 Pass</li>
+          <li><b>Zero Touch-up 시험</b>: 스케줄 10개를 Export 후 수정 없이 완주 여부를 True/False로 기록, 10/10(100%)으로 기준 90% 대비 Pass</li>
+          <li><b>과제 수행</b>: 시험의뢰서·시험절차서·단계보고서·연구노트 작성, 로봇 제조사·수요기업 현장 출장 대응</li>
+          <li><b>의의</b>: 경로를 파일로 내보내는 전통 OLP의 한계를 확인하고, 제어 로직을 실로봇과 공유하는 Isaac Sim 디지털 트윈 OLP(Project 02)로 확장하는 근거 마련</li>
+        </ul>
+        <div class="gallery">
+          <figure><button type="button" data-full="assets/p2-robodk-rb16-cell.png"><img src="assets/p2-robodk-rb16-cell.png" alt="RoboDK RB16 작업셀" width="1423" height="1004" loading="lazy"></button><figcaption>RoboDK에 구성한 RB16 작업셀</figcaption></figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="project">
+      <div class="p-head">
+        <div class="p-num">04</div>
+        <div>
+          <h3>RoboDK 시뮬레이터 사이클 타임 검증 &amp; 작업자 대비 로봇 생산성 분석</h3>
+          <p class="p-meta">📅 2025.08 ~ 2025.10 · 디지털기업in경남 · 단독 수행</p>
+          <ul class="tags"><li>Python</li><li>RoboDK API</li><li>numpy</li><li>scipy</li><li>BVH Motion Capture</li><li>CSV Report</li></ul>
+        </div>
+      </div>
+      <div class="p-body">
+        <p class="p-summary">실제 산업용 로봇(KUKA KR 300 R2500 ultra)의 관절 데이터를 RoboDK에 실제 시간표대로 재생해 시뮬레이터의 사이클 타임 재현 정확도를 정량 검증하고, 모션캡처 데이터로 사람의 Pick&amp;Place 작업을 로봇으로 자동화했을 때의 효과를 자동 분석하는 것을 목표로 한 프로젝트.</p>
+        <div class="metrics">
+          <div class="metric"><div class="v">0.0135%</div><div class="k">평균 사이클 타임 오차<br>목표 10% 이내</div></div>
+          <div class="metric"><div class="v">3,636</div><div class="k">검증 데이터 포인트<br>6구간 × 60.6초</div></div>
+          <div class="metric"><div class="v">153.6 → 111.1초</div><div class="k">작업자 대비 로봇<br>총 소요 시간 (34개 동작)</div></div>
+        </div>
+        <ul class="dots">
+          <li><b>시간 동기화 검증 설계 (단독)</b>: 재생 속도 조절이 아닌, 0.1초 샘플 관절 데이터를 실제 시간표대로 강제해 시뮬레이터의 시간 예측 능력을 직접 시험하는 방식 설계. 실로봇–모델 영점 차이는 2·3축 오프셋(A2 −90°, A3 +90°)으로 보정</li>
+          <li><b>동적 시간 보정</b>: <code>time.sleep(0.1)</code> 방식에서 명령 처리 지연이 누적돼 반복 시 오차 10%를 넘는 문제 발견 → 매 스텝 목표 시각(target time) 기준으로 남은 시간만 대기하는 루프로 누적 오차 제거, <code>time.perf_counter()</code>로 정밀 측정</li>
+          <li><b>Pick&amp;Place 자동 분석</b>: FILE_ID 입력 → BVH 모션캡처·작업 라벨 CSV 로드 → 손 궤적에서 Pick/Place 3D 좌표 자동 추출 → RoboDK 좌표 변환·Bias 보정 → 로봇 시뮬레이션(TCP 800 mm/s, 가감속 3000 mm/s²)·동작별 시간 측정</li>
+          <li><b>리포트 자동화</b>: 상세·요약 CSV 리포트 자동 생성, 평균 사이클타임·UPH·개선율 산출 로직 구현</li>
+          <li><b>의의</b>: 시뮬레이터를 생산성 의사결정 도구로 쓰기 위한 신뢰성 근거를 정량적으로 확보</li>
+        </ul>
+        <div class="gallery">
+          <figure><button type="button" data-full="assets/p1-error-log.png"><img src="assets/p1-error-log.png" alt="6구간 시간 오차율 실행 로그" width="742" height="1164" loading="lazy"></button><figcaption>6개 구간 모두 오차 0.03% 이하, 평균 0.0135%</figcaption></figure>
+          <figure><button type="button" data-full="assets/p1-pickplace-summary.png"><img src="assets/p1-pickplace-summary.png" alt="Pick&amp;Place 분석 요약 출력" width="606" height="258" loading="lazy"></button><figcaption>Pick&amp;Place 자동 분석 요약</figcaption></figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="project">
+      <div class="p-head">
+        <div class="p-num">05</div>
+        <div>
+          <h3>무인지게차 3D LiDAR Pallet 인식 정량목표 수행</h3>
+          <p class="p-meta">📅 2026.02 ~ 2026.03 · 시장대응형 과제</p>
+          <ul class="tags"><li>3D LiDAR</li><li>ROS2 Humble</li><li>OpenPCDet</li><li>Jetson AGX Orin</li><li>C++</li><li>WSL</li></ul>
+        </div>
+      </div>
+      <div class="p-body">
+        <p class="p-summary">무인지게차의 3D LiDAR 기반 Pallet 식별 정확도·속도·Hole 추적 거리 정량목표를 달성하고, 임베디드 장비(Jetson Orin) 실증과 통합 관제 UI 시험까지 준비한 프로젝트.</p>
+        <div class="metrics">
+          <div class="metric"><div class="v">97.51%</div><div class="k">Pallet 식별 정확도<br>목표 90% 이상</div></div>
+          <div class="metric"><div class="v">0.032초</div><div class="k">평균 지연 (최대 0.833초)<br>목표 1초 이하</div></div>
+          <div class="metric"><div class="v">3.17 m</div><div class="k">Hole 추적 거리<br>목표 3 m 이상</div></div>
+        </div>
+        <ul class="dots">
+          <li><b>알고리즘 구현</b>: 오픈소스(OpenPCDet)와 협력 기관 코드를 학습·추론해 WSL 환경에서 Pallet 인식 파이프라인 구현, Jetson Orin 실증용 C++로 고도화</li>
+          <li><b>정량 평가 체계</b>: IoU 기반 TP/FP 정의, Precision·Recall·Accuracy와 지연(mean·p95·max) 자동 산출 스크립트로 440프레임 평가 → 세 항목 모두 PASS</li>
+          <li><b>시험 준비</b>: 항목별 시험절차서 작성, 관제 UI(ROS2 → FastAPI → WebSocket → Web UI) 시험 항목 정의, 두 알고리즘 합산 처리 약 86.53ms로 10Hz 제어 주기 이내임을 제시</li>
+        </ul>
+        <div class="gallery">
+          <figure><button type="button" data-full="assets/p5-pallet-eval.png"><img src="assets/p5-pallet-eval.png" alt="Pallet 인식 정량평가 로그" width="608" height="419" loading="lazy"></button><figcaption>정량평가 실행 로그 (440프레임)</figcaption></figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 06 -->
+    <article class="project">
+      <div class="p-head">
+        <div class="p-num">06</div>
+        <div>
+          <h3>이차전지 Cap Assembly 로봇 비전검사 과제 기획</h3>
+          <p class="p-meta">📅 2026.05 ~ 2026.09 · 전자부품 과제</p>
+          <ul class="tags"><li>UR10e</li><li>Isaac Sim</li><li>3D Sensor</li><li>KPI</li></ul>
+        </div>
+      </div>
+      <div class="p-body">
+        <p class="p-summary">이차전지 캡 어셈블리의 찍힘·스크래치·형상·조립 불량을 로봇과 3D 센서로 자동 검사하는 시스템의 초기 기획과 시뮬레이션 검토를 맡은 프로젝트.</p>
+        <ul class="dots">
+          <li><b>과제 분석</b>: 검사 대상·불량 유형·검사 흐름(투입 → 위치 결정 → 촬영 → AI 판정 → 결과 전달) 정리, 세부 KPI와 기관별 역할 구분</li>
+          <li><b>시뮬레이션 검토</b>: 현장 CAD가 없는 단계에서 UR10e 작업반경(Reach 1,300mm)·센서 배치·듀얼암 간섭 가능 영역·센서 시야각을 Isaac Sim으로 개념 검토</li>
+          <li><b>인수인계</b>: 연구노트·KPI·비전검사 구성·네트워크·서버·데이터 인터페이스 협의 사항을 정리한 인수인계 문서 작성</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <section id="others">
+    <h2>Other Work</h2>
+    <table class="others">
+      <thead><tr><th>시기</th><th>작업</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>2026.07 ~ 08</td><td>VLA 기술 조사</td><td>GR00T·LeRobot·Strands Agents 예제 실습, 실런트 도포 공정에 VLA를 적용하기 위한 독학 범위와 전문가 협업 범위 정리</td></tr>
+        <tr><td>2025</td><td>작업자 행동 분석 대시보드</td><td>스켈레톤 추정 + Gemini 2.5 Flash로 작업 영상을 행동·위험도 단위로 분석하는 웹 페이지 (타임라인, 작업별 시간 비율, 위험도 차트)</td></tr>
+        <tr><td>2025.07</td><td>서울버스 광고 SaaS 기획</td><td>버스 도면(.ai) 구조 분석, 광고 면적 계산 모듈·AI 광고 생성 기능 개발 WBS 수립</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="education">
+    <h2>Education &amp; Activities</h2>
+    <div class="edu-item">
+      <h4>CES 2026</h4>
+      <div class="when">2026.01 · 미국 라스베이거스 · 제이엔이웍스 참가</div>
+      <ul class="dots"><li>참가 서류·출장 준비, 현장 대응, 방문객 질의응답 FAQ 정리</li></ul>
+    </div>
+    <div class="edu-item">
+      <h4>학회·논문 리서치</h4>
+      <ul class="dots">
+        <li><b>CoRL 2025</b> 발표 정리 (Day 1, Day 3)</li>
+        <li>로봇 파운데이션 모델·VLA 논문 리뷰: Diffusion-VLA, Retrocausal(작업 영상 정렬) 등</li>
+      </ul>
+    </div>
+    <div class="edu-item">
+      <h4>교육 이수</h4>
+      <ul class="dots">
+        <li>NVIDIA 교육 참여 (2026.04)</li>
+        <li>Rainbow Robotics 협동로봇(RB 시리즈) 교육</li>
+      </ul>
+    </div>
+    <!-- 학력·자격증·교육 이력은 여기에 추가 -->
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 김지희 · 로봇 시뮬레이션 엔지니어</div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="이미지 확대">
+  <form method="dialog"><button aria-label="닫기">×</button></form>
+  <img id="lb-img" alt="">
+  <p id="lb-cap"></p>
+</dialog>
+
+<script>
+(function(){
+  var lb = document.getElementById('lb'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+  document.querySelectorAll('.gallery button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var i = b.querySelector('img'), fc = b.parentNode.querySelector('figcaption');
+      img.src = b.dataset.full; img.alt = i.alt; cap.textContent = fc ? fc.textContent : '';
+      if (lb.showModal) lb.showModal(); else window.open(b.dataset.full);
+    });
+  });
+  lb.addEventListener('click', function(e){ if (e.target === lb) lb.close(); });
+})();
+</script>
+</body>
+</html>
