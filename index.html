@@ -62,6 +62,12 @@ ul.dots li::marker{color:var(--mute)}
 .exp .when{color:var(--mute); font-size:15px}
 .exp .role{color:var(--sub); margin:2px 0 12px}
 
+.exp-card{border:1px solid var(--line); border-radius:14px; padding:22px 26px; background:var(--card)}
+.exp-top{display:flex; justify-content:space-between; align-items:baseline; gap:8px 16px; flex-wrap:wrap; margin-bottom:10px}
+.exp-role{font-size:16px; font-weight:600; color:var(--hi)}
+.exp-when{color:var(--mute); font-size:15px; font-variant-numeric:tabular-nums; white-space:nowrap}
+.exp-card p{margin:0; color:var(--sub)}
+.exp-card p b{color:var(--fg)}
 .project{padding:44px 0; border-top:1px solid var(--line)}
 .project:first-of-type{border-top:0; padding-top:0}
 .p-head{display:grid; grid-template-columns:56px 1fr; gap:0 16px; align-items:start}
@@ -83,6 +89,8 @@ ul.dots li::marker{color:var(--mute)}
   background:var(--card); cursor:zoom-in; aspect-ratio:16/10}
 .gallery img{width:100%; height:100%; object-fit:cover; object-position:top; display:block}
 .gallery figcaption{font-size:13px; color:var(--mute); margin-top:6px; line-height:1.45}
+.gallery video{display:block; width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; border:1px solid var(--line); border-radius:10px; background:#000}
+.badge{display:inline-block; border:1px solid var(--hi); color:var(--hi); border-radius:999px; padding:0 8px; font-size:12px; margin-right:6px; line-height:1.6}
 .diagram{border:1px solid var(--line); border-radius:12px; padding:12px; margin:0 0 20px; background:var(--card)}
 .diagram svg{width:100%; height:auto; display:block}
 .diagram p{font-size:13px; color:var(--mute); margin:8px 4px 0}
@@ -142,6 +150,7 @@ dialog.lb button{background:none; border:0; color:#fff; font-size:32px; cursor:p
     <ul class="chips">
       <li>NVIDIA Isaac Sim · Omniverse Kit</li>
       <li>Sim-to-Real</li>
+      <li>cuRobo</li>
       <li>OLP (Offline Programming)</li>
       <li>RoboDK</li>
       <li>ROS2</li>
@@ -178,6 +187,7 @@ dialog.lb button{background:none; border:0; color:#fff; font-size:32px; cursor:p
         <h4>Robot Software</h4>
         <ul>
           <li><i>◎</i>OLP 생성 (Rainbow .wsl / RB-Script, MoveJ·MoveL)</li>
+          <li><i>○</i>cuRobo 충돌 회피 경로 계획</li>
           <li><i>○</i>ROS2 Humble (노드, Bridge, Queue 연동)</li>
           <li><i>○</i>로봇 SDK 제어 (UFactory Lite6, Rainbow RB 시리즈)</li>
           <li><i>○</i>URDF → USD 변환, DH 파라미터·좌표계 정합</li>
@@ -199,20 +209,12 @@ dialog.lb button{background:none; border:0; color:#fff; font-size:32px; cursor:p
 
   <section id="experience">
     <h2>Work Experience</h2>
-    <div class="exp">
-      <div class="when">2025.07 ~ 2026.10</div>
-      <div>
-        <h3>제이엔이웍스 · 개발부</h3>
-        <p class="role">로봇 시뮬레이션 엔지니어</p>
-        <p>협동로봇 대상 <b>RoboDK·Isaac Sim 시뮬레이션과 OLP(오프라인 프로그래밍) 개발</b>, 실로봇 Sim-to-Real 검증 담당. 정부 R&amp;D 과제의 정량목표 시험 설계·수행과 보고서 작성까지 맡음.</p>
-        <ul class="dots">
-          <li><b>AI 글로벌 빅테크 육성사업</b>: RoboDK → Rainbow RB16 OLP 정합성·무수정 실행 검증, Isaac Sim 디지털 트윈 OLP 시스템 개발</li>
-          <li><b>디지털기업in경남</b>: RoboDK 시뮬레이터 사이클 타임 검증, 작업자 대비 로봇 생산성 자동 분석</li>
-          <li><b>항공 패널 실런트 자동화</b>: Isaac Sim PhysX 토출 시뮬레이션, RB16 실로봇 도포 PoC</li>
-          <li><b>시장대응형 과제</b>: 무인지게차 3D LiDAR Pallet 인식 정량목표 수행</li>
-          <li>연구노트 작성(강소특구·해양무인·국방벤처·한중국제공동연구·글로벌빅테크), CES 2026 참가</li>
-        </ul>
+    <div class="exp-card">
+      <div class="exp-top">
+        <h3>제이엔이웍스(시스텍) <span class="exp-role">· R&amp;D S/W 연구원</span></h3>
+        <span class="exp-when">2025.07 ~ 재직 중</span>
       </div>
+      <p>라인스캐너 기반 시편 스캔부터 <b>Isaac Sim 실링 경로 생성·cuRobo 충돌 회피 경로 계획</b>, <b>RoboDK·Isaac Sim 기반 협동로봇 OLP 개발</b>과 실로봇 Sim-to-Real 검증, 정부 R&amp;D 과제 정량목표 수행 담당.</p>
     </div>
   </section>
 
@@ -224,29 +226,21 @@ dialog.lb button{background:none; border:0; color:#fff; font-size:32px; cursor:p
       <div class="p-head">
         <div class="p-num">01</div>
         <div>
-          <h3>항공 패널 실런트 도포 로봇 시뮬레이션 &amp; 실로봇 PoC</h3>
-          <p class="p-meta">📅 2026.06 ~ 2026.09 · 항공 패널 실런트 자동화 · 단독 수행</p>
-          <ul class="tags"><li>Isaac Sim 6.0.1</li><li>PhysX PBD Particle</li><li>USD</li><li>URDF</li><li>RB16-900</li><li>Laser Profile Sensor</li></ul>
+          <h3>협동로봇 실링(Sealant) 자동화 — 레이저 스캔 → cuRobo 경로 생성 → 실기 도포</h3>
+          <p class="p-meta"><span class="badge">Sim-to-Real</span> 📅 2026.09 ~ 진행 중</p>
+          <ul class="tags"><li>Isaac Sim</li><li>cuRobo</li><li>RB16-900E</li><li>Line Scanner</li><li>Pneumatic Control</li><li>Python</li></ul>
         </div>
       </div>
       <div class="p-body">
-        <p class="p-summary">실물 패널 CAD가 없는 단계에서 Mock-up 패널로 실런트 도포 공정 전체를 Isaac Sim에 재현하고, 압력·속도·점도에 따른 토출량 변화를 내부 물리엔진으로 검증한 뒤 RB16-900 실로봇 도포 실험으로 연결한 프로젝트.</p>
-        <div class="metrics">
-          <div class="metric"><div class="v">× 2.41</div><div class="k">압력 5 → 12 bar<br>토출량 증가</div></div>
-          <div class="metric"><div class="v">40.1%</div><div class="k">속도 20 → 50 mm/s<br>이론값 40.0%와 일치</div></div>
-          <div class="metric"><div class="v">41.8%</div><div class="k">고점도 / 저점도<br>토출량 비율</div></div>
-          <div class="metric"><div class="v">PASS</div><div class="k">23.15초 시나리오<br>전 구간 좌표 발산 없음</div></div>
-        </div>
+        <p class="p-summary">시편의 3D 형상 취득부터 충돌 회피 경로 생성, 실제 로봇 도포까지 연결되는 협동로봇 실링 자동화 프로세스를 구축했습니다.</p>
         <ul class="dots">
-          <li><b>시뮬 환경 구축 (단독)</b>: 작업장·시편 CAD 장면을 기준으로 CAD 로봇을 URDF 기반 가동 로봇으로 교체, 실런트 건 장착·노즐 TCP 등록, 접근·도포 시작·종료·후퇴 자세 구성 → 팀 공용 USD 환경으로 배포</li>
-          <li><b>토출 물리 모델</b>: PhysX PBD 입자로 노즐 Emitter 구현, 압력–유량 근사식·점도 보정·TCP 속도 연동 단위 길이당 토출량 적용, 시험 결과 CSV·JSON 자동 저장 및 입자 발산 검사</li>
-          <li><b>트러블슈팅</b>: 입자 좌표 발산(PointInstancer 배열과 부모 좌표계 처리 문제)을 월드·로컬 좌표 구조 수정으로 해결, USD Prim 명명 규칙·Script Editor 모듈 경로 문제 정리 → v1.3.1에서 전 Lane <code>finite = True</code></li>
-          <li><b>실로봇 PoC</b>: RB16-900 + 실런트건 + 공압 시스템으로 직선 반복성 → 속도·압력 단일 변수 비교 → 90° 코너 적용 순서의 실험 설계, 레이저 프로파일 센서 Edge 검출 → 로봇 좌표 변환 → 경로 보정 흐름 구성</li>
-          <li><b>의의</b>: 실물 데이터가 들어오면 USD 자산 교체만으로 2027년 Sim-to-Real 실증 단계로 넘어갈 수 있는 구조를 선제 확보</li>
+          <li><b>전체 공정</b>: 시편을 라인 스캐너로 스캔 → 데이터를 Isaac Sim에 업로드 → 실링 경로 생성 → cuRobo 알고리즘으로 충돌 회피 경로 생성 → 실제 로봇 구동으로 이어지는 프로세스를 구현했습니다.</li>
+          <li><b>경로 생성·검증</b>: 라인 스캔 포인트클라우드로 시편 형상을 Isaac Sim에 재현하고, 작업 구간에 맞춘 실링 경로와 충돌 없는 로봇 궤적을 생성·검증했습니다.</li>
+          <li><b>통합 제어·실기 테스트</b>: 공압 장치와 실링 토출기부터 라인 스캐너, Isaac Sim, cuRobo, 실제 로봇까지 직접 설정·연동하고 하나의 프로세스에서 제어해 실제 도포 동작을 확인했습니다.</li>
         </ul>
         <div class="gallery">
-          <figure><button type="button" data-full="assets/p4-bead-lanes.png"><img src="assets/p4-bead-lanes.png" alt="조건별 실런트 비드 비교" width="1600" height="951" loading="lazy"></button><figcaption>압력·속도·점도 조건별 Lane에 적층된 PhysX 입자 비드</figcaption></figure>
-          <figure><button type="button" data-full="assets/p4-sealant-cell.png"><img src="assets/p4-sealant-cell.png" alt="실런트 로봇 시뮬레이션 셀" width="1600" height="888" loading="lazy"></button><figcaption>Isaac Sim 실런트 도포 로봇 작업셀</figcaption></figure>
+          <figure><video controls muted playsinline preload="metadata" poster="assets/p1-sealing-demo-poster.jpg" width="1280" height="720"><source src="assets/p1-sealing-demo.mp4" type="video/mp4"></video><figcaption>RB16-900E 실기 도포 — 라인 스캐너 스캔 후 실링 토출</figcaption></figure>
+          <figure><button type="button" data-full="assets/p1-sealing-scan-isaac.png"><img src="assets/p1-sealing-scan-isaac.png" alt="라인 스캔 포인트클라우드를 Isaac Sim에 재현한 시편" width="1600" height="947" loading="lazy"></button><figcaption>라인 스캔 포인트클라우드로 Isaac Sim에 재현한 시편 형상</figcaption></figure>
         </div>
       </div>
     </article>
